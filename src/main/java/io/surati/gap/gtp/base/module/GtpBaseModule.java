@@ -83,6 +83,27 @@ public enum GtpBaseModule implements Module {
 							GtpBaseAccess.CONFIGURER_TIERS
 						),
 						false
+					),
+					new SimpleSubmenu(
+						3, "lnr-book", "Configurer les liasses", "/gtp/base/bundle",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_LIASSES
+						),
+						true
+					),
+					new SimpleSubmenu(
+						4, "lnr-book", "Configurer les titres", "/gtp/base/title",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_TITRES
+						),
+						false
+					),
+					new SimpleSubmenu(
+						5, "lnr-book", "Configurer les sections", "/gtp/base/section",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_SECTIONS
+						),
+						false
 					)
 				)
 			)
