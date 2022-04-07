@@ -84,7 +84,9 @@ SOFTWARE.
                       <label for="code" class="">
                         <xsl:text>Code</xsl:text>
                       </label>
-                      <p><xsl:value-of select="item/code"/></p>
+                      <p>
+                        <xsl:value-of select="item/code"/>
+                      </p>
                       <input name="code" type="hidden" value="{item/code}"/>
                     </xsl:otherwise>
                   </xsl:choose>
