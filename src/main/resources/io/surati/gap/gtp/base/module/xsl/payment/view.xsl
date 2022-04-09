@@ -182,16 +182,14 @@ SOFTWARE.
                       <th class="text-center">N°</th>
                       <th class="text-center">Date</th>
                       <th class="text-center">Référence</th>
-                      <xsl:if test="group/is_hetero">
-                        <th class="text-center">Bénéficiaire</th>
-                      </xsl:if>
+                      <th class="text-center">Bénéficiaire</th>
                       <th class="text-center">Mandat</th>
                       <th class="text-center">Montant payé</th>
                       <th class="text-center">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <xsl:for-each select="group/payment_orders/payment_order">
+                    <xsl:for-each select="payment_orders/payment_order">
                       <tr>
                         <td class="text-center text-muted" style="width: 80px;">
                           <xsl:value-of select="position()"/>
@@ -203,11 +201,9 @@ SOFTWARE.
                         <td class="text-center">
                           <xsl:value-of select="reference"/>
                         </td>
-                        <xsl:if test="../../../group/is_hetero">
-                          <td class="text-center">
-                            <xsl:value-of select="beneficiary"/>
-                          </td>
-                        </xsl:if>
+                        <td class="text-center">
+                          <xsl:value-of select="beneficiary"/>
+                        </td>
                         <td class="text-center">
                           <xsl:value-of select="ref_doc_name"/>
                         </td>

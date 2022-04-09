@@ -46,20 +46,21 @@ public enum GtpBaseModule implements Module {
 		Menu.VALUES.add(
 			new SimpleMenu(
 				800,
+				"history",
 				"lnr-history",
 				"Historique",
 				"bg-warning",
 				"Explorer vos données de production",
 				new IterableOf<>(
 					new SimpleSubmenu(
-						1, "lnr-briefcase", "Mandats", "/warrant/history",
+						1, "warrant", "lnr-briefcase", "Mandats", "/warrant/history",
 						new IterableOf<>(
 							GtpBaseAccess.VISUALISER_MANDATS
 						),
 						false
 					),
 					new SimpleSubmenu(
-						2, "lnr-diamond", "Paiements", "/payment/list",
+						2, "payment", "lnr-diamond", "Paiements", "/payment/list",
 						new IterableOf<>(
 							GtpBaseAccess.VISUALISER_PAIEMENTS
 						),
@@ -71,13 +72,14 @@ public enum GtpBaseModule implements Module {
 		Menu.VALUES.add(
 			new SimpleMenu(
 				900,
+				"settings",
 				"lnr-cog",
 				"Paramétrage",
 				"bg-info",
 				"Paramétrer vos données de base",
 				new IterableOf<>(
 					new SimpleSubmenu(
-						1, "lnr-users", "Tiers", "/third-party",
+						1, "third-party", "lnr-users", "Tiers", "/third-party",
 						new IterableOf<>(
 							GtpBaseAccess.VISUALISER_TIERS,
 							GtpBaseAccess.CONFIGURER_TIERS
@@ -85,21 +87,21 @@ public enum GtpBaseModule implements Module {
 						false
 					),
 					new SimpleSubmenu(
-						3, "lnr-book", "Configurer les liasses", "/gtp/base/bundle",
+						3, "bundle", "lnr-book", "Liasses", "/gtp/base/bundle",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_LIASSES
 						),
 						true
 					),
 					new SimpleSubmenu(
-						4, "lnr-book", "Configurer les titres", "/gtp/base/title",
+						4, "title", "lnr-book", "Titres", "/gtp/base/title",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_TITRES
 						),
 						false
 					),
 					new SimpleSubmenu(
-						5, "lnr-book", "Configurer les sections", "/gtp/base/section",
+						5, "section", "lnr-book", "Sections", "/gtp/base/section",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_SECTIONS
 						),
