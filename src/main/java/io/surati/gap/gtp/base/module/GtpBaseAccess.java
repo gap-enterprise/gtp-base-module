@@ -29,10 +29,12 @@ public enum GtpBaseAccess implements Access {
 	VISUALISER_MANDATS("Visualiser les mandats", ""),
 	VISUALISER_PAIEMENTS("Visualiser les paiements", ""),
 	VISUALISER_TIERS("Visualiser les tiers", ""),
+	VISUALISER_CHAPITRES("Visualiser les chapitres", ""),
 	CONFIGURER_TIERS("Configurer les tiers", ""),
 	CONFIGURER_LIASSES("Configurer les liasses", ""),
 	CONFIGURER_TITRES("Configurer les titres", ""),
-	CONFIGURER_SECTIONS("Configurer les sections", "");
+	CONFIGURER_SECTIONS("Configurer les sections", ""),
+	CONFIGURER_CHAPITRES("Configurer les chapitres", "");
 
 	static {
 		for (Access acs : GtpBaseAccess.values()) {

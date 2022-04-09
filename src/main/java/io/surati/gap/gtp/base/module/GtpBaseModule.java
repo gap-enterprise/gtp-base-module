@@ -104,6 +104,13 @@ public enum GtpBaseModule implements Module {
 							GtpBaseAccess.CONFIGURER_SECTIONS
 						),
 						false
+					),
+					new SimpleSubmenu(
+						6, "lnr-book", "Configurer les chapitres", "/gtp/base/chapter",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_CHAPITRES
+						),
+						false
 					)
 				)
 			)
