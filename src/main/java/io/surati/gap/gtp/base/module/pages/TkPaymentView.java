@@ -24,7 +24,7 @@ SOFTWARE.
 package io.surati.gap.gtp.base.module.pages;
 
 import io.surati.gap.gtp.base.module.xe.XePayment;
-import io.surati.gap.gtp.base.module.xe.XePaymentOrderGroup;
+import io.surati.gap.gtp.base.module.xe.XePaymentOrders;
 import io.surati.gap.payment.base.api.Payment;
 import io.surati.gap.payment.base.db.DbPayments;
 import io.surati.gap.web.base.RsPage;
@@ -67,10 +67,7 @@ public final class TkPaymentView implements Take {
 		final Payment item = new DbPayments(this.source).get(id);
 		final XeSource src = new XeChain(
 			new XePayment(item),
-			new XePaymentOrderGroup(
-			    "group",
-				item.orders()
-			),
+			new XePaymentOrders(item.orders()),
 			new XeRootPage(
 				"current_page",
 				"Historique des paiements",

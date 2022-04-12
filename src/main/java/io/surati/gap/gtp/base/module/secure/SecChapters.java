@@ -20,6 +20,7 @@ import io.surati.gap.admin.base.api.User;
 import io.surati.gap.gtp.base.api.Chapter;
 import io.surati.gap.gtp.base.api.Chapters;
 import io.surati.gap.gtp.base.module.GtpBaseAccess;
+import javax.ws.rs.NotAuthorizedException;
 
 public final class SecChapters implements Chapters {
 
@@ -39,13 +40,16 @@ public final class SecChapters implements Chapters {
 
     @Override
     public Iterable<Chapter> iterate() {
+        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_CHAPITRES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les chapitres.");
+        }
         return this.origin.iterate();
     }
 
     @Override
     public void add(String code, String name, String notes) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_CHAPITRES)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour ajouter un chapitre.");
         }
         this.origin.add(code, name, notes);
     }
@@ -53,7 +57,7 @@ public final class SecChapters implements Chapters {
     @Override
     public void remove(final String code) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_CHAPITRES)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour mener cette action.");
         }
         this.origin.remove(code);
     }

@@ -19,6 +19,7 @@ package io.surati.gap.gtp.base.module.secure;
 import io.surati.gap.admin.base.api.User;
 import io.surati.gap.gtp.base.api.Chapter;
 import io.surati.gap.gtp.base.module.GtpBaseAccess;
+import javax.ws.rs.NotAuthorizedException;
 
 public final class SecChapter implements Chapter {
 
@@ -54,7 +55,7 @@ public final class SecChapter implements Chapter {
     @Override
     public void update(final String name, final String notes) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_CHAPITRES)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour modifier un chapitre.");
         }
         this.origin.update(name, notes);
     }

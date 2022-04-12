@@ -3,6 +3,7 @@ package io.surati.gap.gtp.base.module.secure;
 import io.surati.gap.admin.base.api.User;
 import io.surati.gap.gtp.base.api.Section;
 import io.surati.gap.gtp.base.module.GtpBaseAccess;
+import javax.ws.rs.NotAuthorizedException;
 
 public final class SecSection implements Section {
 
@@ -38,7 +39,7 @@ public final class SecSection implements Section {
     @Override
     public void update(final String name, final String notes) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_SECTIONS)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour modifier une section.");
         }
         this.origin.update(name, notes);
     }
