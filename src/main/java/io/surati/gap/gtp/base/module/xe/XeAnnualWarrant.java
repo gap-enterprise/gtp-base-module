@@ -24,26 +24,25 @@ SOFTWARE.
 package io.surati.gap.gtp.base.module.xe;
 
 import com.minlessika.map.CleanMap;
+import io.surati.gap.commons.utils.amount.FrThousandSeparatorAmount;
 import io.surati.gap.commons.utils.convert.FrShortDateFormat;
-import io.surati.gap.payment.base.api.Payment;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import io.surati.gap.gtp.base.api.AnnualWarrant;
 import org.takes.rs.xe.XeDirectives;
 import org.takes.rs.xe.XeWrap;
 import org.xembly.Directives;
 
 /**
- * Xml Payment.
+ * Document to bundle xml.
  *
- * @since 0.1
+ * @since 3.0
  */
-public final class XePayment extends XeWrap {
+public final class XeAnnualWarrant extends XeWrap {
 
-	public XePayment(final Payment note) {
-		this("item", note);
+	public XeAnnualWarrant(final AnnualWarrant item) {
+		this("item", item);
 	}
 
-	public XePayment(final String name, final Payment item) {
+	public XeAnnualWarrant(final String name, final AnnualWarrant item) {
 		super(
 			new XeDirectives(
 				new Directives()
@@ -51,27 +50,22 @@ public final class XePayment extends XeWrap {
 				.add(
 					new CleanMap<>()
 						.add("id", item.id())
-						.add("date", item.date().format(DateTimeFormatter.ISO_DATE))
 						.add("date_view", new FrShortDateFormat().convert(item.date()))
-						.add("note_id", item.id())
-						.add("note", item.name())
-						.add("reference", item.internalReference())
-						.add("number", item.issuerReference())
-						.add("amount", item.amount().toString())
-						.add("amount_in_human", item.amountInHuman())
-						.add("amount_in_letters", item.amountInLetters())
-						.add("issuer_id", item.issuer().id())
-						.add("issuer", item.issuer().name())
-						.add("status_id", item.status().name())
-						.add("status", item.status().toString())
-						.add("beneficiary", item.beneficiary().name())
-						.add("beneficiary_id", item.beneficiary().id())
-						.add("place", item.place())
-						.add("cancel_reason", item.reasonOfCancel())
-						.add("mean_type", item.meanType().toString())
-						.add("mean_type_id", item.meanType().name())
-						.add("cancel_date", item.cancelDate() == LocalDateTime.MIN ? null : item.cancelDate().format(DateTimeFormatter.ISO_DATE_TIME))
-						.add("cancel_date_view", item.cancelDate() == LocalDateTime.MIN ? null : new FrShortDateFormat().convert(item.cancelDate()))
+						.add("year", item.year())
+						.add("bundle", item.bundle().code())
+						.add("title", item.title().fullName())
+						.add("section", item.section().fullName())
+						.add("imputation", item.imputation())
+						.add("reference", item.reference())
+						.add("annual_amount_to_pay", item.annualAmountToPay())
+						.add("annual_amount_to_pay_in_human", new FrThousandSeparatorAmount(item.annualAmountToPay()))
+						.add("annual_amount_paid", item.annualAmountPaid())
+						.add("annual_amount_paid_in_human", new FrThousandSeparatorAmount(item.annualAmountPaid()))
+						.add("annual_amount_left", item.annualAmountLeft())
+						.add("annual_amount_left_in_human", new FrThousandSeparatorAmount(item.annualAmountLeft()))
+						.add("total_amount_to_pay", item.amount())
+						.add("total_amount_to_pay_in_human", new FrThousandSeparatorAmount(item.amount()))
+						.add("beneficiary", item.issuer().name())
 				)
 				.up()
 			)
