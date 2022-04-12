@@ -4,6 +4,7 @@ import io.surati.gap.admin.base.api.User;
 import io.surati.gap.gtp.base.api.Bundle;
 import io.surati.gap.gtp.base.api.Bundles;
 import io.surati.gap.gtp.base.module.GtpBaseAccess;
+import javax.ws.rs.NotAuthorizedException;
 
 public final class SecBundles implements Bundles {
 
@@ -23,13 +24,16 @@ public final class SecBundles implements Bundles {
 
     @Override
     public Iterable<Bundle> iterate() {
+        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_LIASSES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les liasses.");
+        }
         return this.origin.iterate();
     }
 
     @Override
     public void add(final String code, final String notes) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_LIASSES)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour ajouter une liasse.");
         }
         this.origin.add(code, notes);
     }
@@ -37,7 +41,7 @@ public final class SecBundles implements Bundles {
     @Override
     public void remove(final String code) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_LIASSES)) {
-            throw new IllegalArgumentException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour supprimer une liasse.");
         }
         this.origin.remove(code);
     }

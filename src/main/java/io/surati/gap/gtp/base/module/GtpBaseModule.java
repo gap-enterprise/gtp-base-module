@@ -89,21 +89,32 @@ public enum GtpBaseModule implements Module {
 					new SimpleSubmenu(
 						3, "bundle", "lnr-book", "Liasses", "/gtp/base/bundle",
 						new IterableOf<>(
-							GtpBaseAccess.CONFIGURER_LIASSES
+							GtpBaseAccess.CONFIGURER_LIASSES,
+							GtpBaseAccess.VISUALISER_LIASSES
 						),
 						true
 					),
 					new SimpleSubmenu(
 						4, "title", "lnr-book", "Titres", "/gtp/base/title",
 						new IterableOf<>(
-							GtpBaseAccess.CONFIGURER_TITRES
+							GtpBaseAccess.CONFIGURER_TITRES,
+							GtpBaseAccess.VISUALISER_TITRES
 						),
 						false
 					),
 					new SimpleSubmenu(
 						5, "section", "lnr-book", "Sections", "/gtp/base/section",
 						new IterableOf<>(
-							GtpBaseAccess.CONFIGURER_SECTIONS
+							GtpBaseAccess.CONFIGURER_SECTIONS,
+							GtpBaseAccess.VISUALISER_SECTIONS
+						),
+						false
+					),
+					new SimpleSubmenu(
+						6, "chapter", "lnr-book", "Chapitres", "/gtp/base/chapter",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_CHAPITRES,
+							GtpBaseAccess.VISUALISER_CHAPITRES
 						),
 						false
 					),
