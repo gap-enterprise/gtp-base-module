@@ -91,7 +91,7 @@ SOFTWARE.
               <xsl:text>Retourner </xsl:text>
               <i class="fa fa-arrow-left"/>
             </a>
-            <xsl:if test="../../sec:hasAccess(.,'CONFIGURER_CHAPITRES')">
+            <xsl:if test="sec:hasAccess(.,'CONFIGURER_CHAPITRES')">
               <a href="/gtp/base/chapter/edit" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-success">
                 <xsl:text>Nouveau </xsl:text>
                 <i class="fa fa-file"/>
