@@ -58,7 +58,7 @@ public final class SecSubChapters implements Chapters {
     @Override
     public void remove(final String code) {
         if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_SOUS_CHAPITRES)) {
-            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour mener cette action.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour supprimer un sous-chapitre.");
         }
         this.origin.remove(code);
     }

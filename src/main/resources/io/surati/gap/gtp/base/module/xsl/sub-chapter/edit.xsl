@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Compte de gestion - Sous-chapitres</xsl:text>
+      <xsl:text>GAP - Sous-chapitres</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
