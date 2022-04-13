@@ -16,19 +16,20 @@
  */
 package io.surati.gap.gtp.base.module.secure;
 
+import javax.ws.rs.NotAuthorizedException;
+
 import io.surati.gap.admin.base.api.User;
 import io.surati.gap.gtp.base.api.Chapter;
 import io.surati.gap.gtp.base.api.Chapters;
 import io.surati.gap.gtp.base.module.GtpBaseAccess;
-import javax.ws.rs.NotAuthorizedException;
 
-public final class SecChapters implements Chapters {
+public final class SecSubChapters implements Chapters {
 
     private final Chapters origin;
 
     private final User user;
 
-    public SecChapters(final Chapters origin, final User user) {
+    public SecSubChapters(final Chapters origin, final User user) {
         this.origin = origin;
         this.user = user;
     }
@@ -40,24 +41,24 @@ public final class SecChapters implements Chapters {
 
     @Override
     public Iterable<Chapter> iterate() {
-        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_CHAPITRES)) {
-            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les chapitres.");
+        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_SOUS_CHAPITRES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les sous-chapitres.");
         }
         return this.origin.iterate();
     }
 
     @Override
     public void add(String code, String name, String notes) {
-        if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_CHAPITRES)) {
-            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour ajouter un chapitre.");
+        if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_SOUS_CHAPITRES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour ajouter un sous-chapitre.");
         }
         this.origin.add(code, name, notes);
     }
 
     @Override
     public void remove(final String code) {
-        if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_CHAPITRES)) {
-            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour supprimer un chapitre.");
+        if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_SOUS_CHAPITRES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour supprimer un sous-chapitre.");
         }
         this.origin.remove(code);
     }

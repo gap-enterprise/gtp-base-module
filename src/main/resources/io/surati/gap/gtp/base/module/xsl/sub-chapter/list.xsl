@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Chapitres</xsl:text>
+      <xsl:text>GAP - Sous-chapitres</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -31,7 +31,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Chapitres</xsl:text>
+            <xsl:text>Sous-chapitres</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -41,7 +41,7 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="active breadcrumb-item">
-                    Chapitres
+                    Sous-chapitres
                   </li>
                 </ol>
               </nav>
@@ -55,11 +55,11 @@ SOFTWARE.
     <div class="main-card mb-3 card card-body">
       <div class="card-header">
         <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-          <xsl:text>Liste des chapitres</xsl:text>
+          <xsl:text>Liste des sous-chapitres</xsl:text>
         </div>
-        <xsl:if test="sec:hasAccess(.,'CONFIGURER_CHAPITRES')">
+        <xsl:if test="sec:hasAccess(.,'CONFIGURER_SOUS_CHAPITRES')">
           <div class="btn-actions-pane-right">
-            <a href="/gtp/base/chapter/edit" type="button" class="btn-icon btn-wide btn-outline-2x btn btn-outline-focus btn-sm d-flex">
+            <a href="/gtp/base/sub-chapter/edit" type="button" class="btn-icon btn-wide btn-outline-2x btn btn-outline-focus btn-sm d-flex">
               <xsl:text>Nouveau</xsl:text>
               <span class="pl-2 align-middle opacity-7">
                 <i class="fa fa-plus"/>
@@ -68,12 +68,12 @@ SOFTWARE.
           </div>
         </xsl:if>
       </div>
-      <xsl:if test="chapters[not(chapter)]">
+      <xsl:if test="sub-chapters[not(sub-chapter)]">
         <h6 class="text-center pb-1 pt-1">
-          <xsl:text>Il n'y a aucun chapitre.</xsl:text>
+          <xsl:text>Il n'y a aucun sous-chapitre.</xsl:text>
         </h6>
       </xsl:if>
-      <xsl:if test="chapters[chapter]">
+      <xsl:if test="sub-chapters[sub-chapter]">
         <div class="table-responsive">
           <table class=" mb-0 table table-hover table-sm">
             <thead>
@@ -85,7 +85,7 @@ SOFTWARE.
               </tr>
             </thead>
             <tbody>
-              <xsl:for-each select="chapters/chapter">
+              <xsl:for-each select="sub-chapters/sub-chapter">
                 <tr>
                   <td>
                     <xsl:value-of select="position()"/>
@@ -98,14 +98,14 @@ SOFTWARE.
                   </td>
                   <td>
                     <div role="group">
-                      <a href="/gtp/base/chapter/view?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-primary">
+                      <a href="/gtp/base/sub-chapter/view?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-primary">
                         <i class="fa fa-eye"/>
                       </a>
-                      <xsl:if test="../../sec:hasAccess(.,'CONFIGURER_CHAPITRES')">
-                        <a href="/gtp/base/chapter/edit?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-success">
+                      <xsl:if test="../../sec:hasAccess(.,'CONFIGURER_SOUS_CHAPITRES')">
+                        <a href="/gtp/base/sub-chapter/edit?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-success">
                           <i class="fa fa-edit"/>
                         </a>
-                        <a href="/gtp/base/chapter/delete?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-danger" onclick="return confirm('Voulez-vous supprimer ce chapitre ?');">
+                        <a href="/gtp/base/sub-chapter/delete?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-danger" onclick="return confirm('Voulez-vous supprimer ce sous-chapitre ?');">
                           <i class="fa fa-trash"/>
                         </a>
                       </xsl:if>

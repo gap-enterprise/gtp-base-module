@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Chapitres</xsl:text>
+      <xsl:text>GAP - Sous-chapitres</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -32,7 +32,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Chapitres</xsl:text>
+            <xsl:text>Sous-chapitres</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -42,15 +42,15 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="/gtp/base/chapter">Chapitres</a>
+                    <a href="/gtp/base/sub-chapter">Sous-chapitres</a>
                   </li>
                   <li class="active breadcrumb-item" aria-current="page">
                     <xsl:choose>
                       <xsl:when test="$is_new">
-                        <xsl:text>Créer un chapitre</xsl:text>
+                        <xsl:text>Créer un sous-chapitre</xsl:text>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:text>Modifier Chapitre </xsl:text>
+                        <xsl:text>Modifier Sous-chapitre </xsl:text>
                         <xsl:value-of select="item/code"/>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -68,7 +68,7 @@ SOFTWARE.
     <div class="main-card mb-3 card">
       <div class="card">
         <div class="card-body">
-          <form action="/gtp/base/chapter/save?code={item/code}" method="post">
+          <form action="/gtp/base/sub-chapter/save?code={item/code}" method="post">
             <div class="form-row">
               <div class="col-md-12">
                 <div class="position-relative form-group">
@@ -125,10 +125,10 @@ SOFTWARE.
                 </xsl:choose>
                 <i class="fa fa-check"/>
               </button>
-              <button type="button" onclick="location.href='/gtp/base/chapter'" class="btn-shadow float-right btn-wide btn-pill mr-1 btn btn-outline-secondary">
+              <button type="button" onclick="location.href='/gtp/base/sub-chapter'" class="btn-shadow float-right btn-wide btn-pill mr-1 btn btn-outline-secondary">
                 <xsl:if test="not($is_new)">
                   <xsl:attribute name="onclick">
-                    <xsl:text>location.href='/gtp/base/chapter/view?code=</xsl:text>
+                    <xsl:text>location.href='/gtp/base/sub-chapter/view?code=</xsl:text>
                     <xsl:value-of select="item/code"/>
                     <xsl:text>'</xsl:text>
                   </xsl:attribute>

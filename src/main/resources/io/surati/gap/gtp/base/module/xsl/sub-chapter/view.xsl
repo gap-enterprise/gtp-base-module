@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Chapitres</xsl:text>
+      <xsl:text>GAP - Sous-chapitres</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -31,7 +31,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Chapitres</xsl:text>
+            <xsl:text>Sous-chapitres</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -41,10 +41,10 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="/gtp/base/chapter">Chapitres</a>
+                    <a href="/gtp/base/sub-chapter">Sous-chapitres</a>
                   </li>
                   <li class="active breadcrumb-item" aria-current="page">
-                    <xsl:text>Chapitre </xsl:text>
+                    <xsl:text>Sous-chapitre </xsl:text>
                     <xsl:value-of select="item/code"/>
                   </li>
                 </ol>
@@ -87,20 +87,20 @@ SOFTWARE.
           </div>
           <div class="divider"/>
           <div class="clearfix">
-            <a href="/gtp/base/chapter" class="btn-shadow float-right btn-wide btn-pill btn btn-outline-secondary">
+            <a href="/gtp/base/sub-chapter" class="btn-shadow float-right btn-wide btn-pill btn btn-outline-secondary">
               <xsl:text>Retourner </xsl:text>
               <i class="fa fa-arrow-left"/>
             </a>
-            <xsl:if test="sec:hasAccess(.,'CONFIGURER_CHAPITRES')">
-              <a href="/gtp/base/chapter/edit" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-success">
+            <xsl:if test="sec:hasAccess(.,'CONFIGURER_SOUS_CHAPITRES')">
+              <a href="/gtp/base/sub-chapter/edit" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-success">
                 <xsl:text>Nouveau </xsl:text>
                 <i class="fa fa-file"/>
               </a>
-              <a href="/gtp/base/chapter/delete?code={item/code}" class="btn-shadow btn-wide float-right mr-1 btn-pill btn-hover-shine btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce chapitre ?');">
+              <a href="/gtp/base/sub-chapter/delete?code={item/code}" class="btn-shadow btn-wide float-right mr-1 btn-pill btn-hover-shine btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce sous-chapitre ?');">
                 <xsl:text>Supprimer </xsl:text>
                 <i class="fa fa-trash"/>
               </a>
-              <a href="/gtp/base/chapter/edit?code={item/code}" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-primary">
+              <a href="/gtp/base/sub-chapter/edit?code={item/code}" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-primary">
                 <xsl:text>Modifier </xsl:text>
                 <i class="fa fa-edit"/>
               </a>
