@@ -125,6 +125,14 @@ public enum GtpBaseModule implements Module {
 							GtpBaseAccess.VISUALISER_SOUS_CHAPITRES
 						),
 						false
+					),
+					new SimpleSubmenu(
+						20, "treasury", "lnr-book", "Postes comptables", "/gtp/base/treasury",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_PAIERIES,
+							GtpBaseAccess.VISUALISER_PAIERIES
+						),
+						true
 					)
 				)
 			)

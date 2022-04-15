@@ -12,6 +12,8 @@ import io.surati.gap.gtp.base.module.actions.TkThirdPartyDelete;
 import io.surati.gap.gtp.base.module.actions.TkThirdPartySave;
 import io.surati.gap.gtp.base.module.actions.TkTitleDelete;
 import io.surati.gap.gtp.base.module.actions.TkTitleSave;
+import io.surati.gap.gtp.base.module.actions.TkTreasuryDelete;
+import io.surati.gap.gtp.base.module.actions.TkTreasurySave;
 import io.surati.gap.gtp.base.module.pages.TkWarrantHistory;
 import io.surati.gap.web.base.TkSecure;
 import javax.sql.DataSource;
@@ -117,6 +119,20 @@ public final class FkActions extends FkWrap {
 					"/gtp/base/sub-chapter/delete",
 					new TkSecure(
 						new TkSubChapterDelete(source),
+						source
+					)
+				),
+				new FkRegex(
+					"/gtp/base/treasury/save",
+					new TkSecure(
+						new TkTreasurySave(source),
+						source
+					)
+				),
+				new FkRegex(
+					"/gtp/base/treasury/delete",
+					new TkSecure(
+						new TkTreasuryDelete(source),
 						source
 					)
 				)
