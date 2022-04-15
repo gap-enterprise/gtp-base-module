@@ -206,7 +206,7 @@ SOFTWARE.
     <dependency>
       <groupId>io.surati.gap</groupId>
       <artifactId>gtp-base</artifactId>
-      <version>0.3.6</version>
+      <version>0.3.7</version>
     </dependency>
   </dependencies>
   <build>
