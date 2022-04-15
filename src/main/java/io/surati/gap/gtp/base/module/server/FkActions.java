@@ -4,6 +4,8 @@ import io.surati.gap.gtp.base.module.actions.TkBundleDelete;
 import io.surati.gap.gtp.base.module.actions.TkBundleSave;
 import io.surati.gap.gtp.base.module.actions.TkChapterDelete;
 import io.surati.gap.gtp.base.module.actions.TkChapterSave;
+import io.surati.gap.gtp.base.module.actions.TkRegionDelete;
+import io.surati.gap.gtp.base.module.actions.TkRegionSave;
 import io.surati.gap.gtp.base.module.actions.TkSectionDelete;
 import io.surati.gap.gtp.base.module.actions.TkSectionSave;
 import io.surati.gap.gtp.base.module.actions.TkSubChapterDelete;
@@ -133,6 +135,20 @@ public final class FkActions extends FkWrap {
 					"/gtp/base/treasury/delete",
 					new TkSecure(
 						new TkTreasuryDelete(source),
+						source
+					)
+				),
+				new FkRegex(
+					"/gtp/base/region/save",
+					new TkSecure(
+						new TkRegionSave(source),
+						source
+					)
+				),
+				new FkRegex(
+					"/gtp/base/region/delete",
+					new TkSecure(
+						new TkRegionDelete(source),
 						source
 					)
 				)

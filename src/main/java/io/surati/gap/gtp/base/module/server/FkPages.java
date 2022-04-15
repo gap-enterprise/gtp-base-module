@@ -9,6 +9,9 @@ import io.surati.gap.gtp.base.module.pages.TkChapterView;
 import io.surati.gap.gtp.base.module.pages.TkPaymentList;
 import io.surati.gap.gtp.base.module.pages.TkPaymentOrderView;
 import io.surati.gap.gtp.base.module.pages.TkPaymentView;
+import io.surati.gap.gtp.base.module.pages.TkRegionEdit;
+import io.surati.gap.gtp.base.module.pages.TkRegionList;
+import io.surati.gap.gtp.base.module.pages.TkRegionView;
 import io.surati.gap.gtp.base.module.pages.TkSectionEdit;
 import io.surati.gap.gtp.base.module.pages.TkSectionList;
 import io.surati.gap.gtp.base.module.pages.TkSectionView;
@@ -213,6 +216,27 @@ public final class FkPages extends FkWrap {
 					"/gtp/base/treasury/view",
 					new TkSecure(
 						new TkTreasuryView(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/region/edit",
+					new TkSecure(
+						new TkRegionEdit(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/region",
+					new TkSecure(
+						new TkRegionList(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/region/view",
+					new TkSecure(
+						new TkRegionView(src),
 						src
 					)
 				)
