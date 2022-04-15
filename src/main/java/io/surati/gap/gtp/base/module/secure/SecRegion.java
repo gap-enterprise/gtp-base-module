@@ -1,0 +1,46 @@
+package io.surati.gap.gtp.base.module.secure;
+
+import io.surati.gap.admin.base.api.User;
+import io.surati.gap.gtp.base.api.Region;
+import io.surati.gap.gtp.base.module.GtpBaseAccess;
+import javax.ws.rs.NotAuthorizedException;
+
+public final class SecRegion implements Region {
+
+    private final Region origin;
+
+    private final User user;
+
+    public SecRegion(final Region origin , final User user) {
+        this.origin = origin;
+        this.user = user;
+    }
+
+    @Override
+    public String code() {
+        return this.origin.code();
+    }
+
+    @Override
+    public String name() {
+        return this.origin.name();
+    }
+
+    @Override
+    public String notes() {
+        return this.origin.notes();
+    }
+
+    @Override
+    public String fullName() {
+        return this.origin.fullName();
+    }
+
+    @Override
+    public void update(final String name, final String notes) {
+        if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_REGIONS)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour modifier une région.");
+        }
+        this.origin.update(name, notes);
+    }
+}
