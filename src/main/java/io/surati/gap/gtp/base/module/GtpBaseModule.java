@@ -127,6 +127,14 @@ public enum GtpBaseModule implements Module {
 						false
 					),
 					new SimpleSubmenu(
+						9, "line", "lnr-book", "Lignes", "/gtp/base/line",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_LIGNES,
+							GtpBaseAccess.VISUALISER_LIGNES
+						),
+						false
+					),
+					new SimpleSubmenu(
 						20, "treasury", "lnr-book", "Postes comptables", "/gtp/base/treasury",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_PAIERIES,
