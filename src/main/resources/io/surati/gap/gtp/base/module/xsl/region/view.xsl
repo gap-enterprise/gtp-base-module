@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Postes comptables</xsl:text>
+      <xsl:text>GAP - Régions</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -31,7 +31,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Postes comptables</xsl:text>
+            <xsl:text>Régions</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -41,11 +41,11 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="/gtp/base/treasury">Postes comptables</a>
+                    <a href="/gtp/base/region">Régions</a>
                   </li>
                   <li class="active breadcrumb-item" aria-current="page">
-                    <xsl:text>Poste comptable </xsl:text>
-                    <xsl:value-of select="item/abbreviated"/>
+                    <xsl:text>Région </xsl:text>
+                    <xsl:value-of select="item/code"/>
                   </li>
                 </ol>
               </nav>
@@ -70,53 +70,37 @@ SOFTWARE.
             </div>
             <div class="col-md-6">
               <h5>
-                <xsl:text>Abrégé</xsl:text>
-              </h5>
-              <p>
-                <xsl:value-of select="item/abbreviated"/>
-              </p>
-            </div>
-            <div class="col-md-12">
-              <h5>
                 <xsl:text>Intitulé</xsl:text>
               </h5>
               <p>
                 <xsl:value-of select="item/name"/>
               </p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
               <h5>
-                <xsl:text>Représentant</xsl:text>
+                <xsl:text>Notes</xsl:text>
               </h5>
               <p>
-                <xsl:value-of select="item/representative"/>
-              </p>
-            </div>
-            <div class="col-md-6">
-              <h5>
-                <xsl:text>Titre</xsl:text>
-              </h5>
-              <p>
-                <xsl:value-of select="item/representative_position"/>
+                <xsl:value-of select="item/notes"/>
               </p>
             </div>
           </div>
           <div class="divider"/>
           <div class="clearfix">
-            <a href="/gtp/base/treasury" class="btn-shadow float-right btn-wide btn-pill btn btn-outline-secondary">
+            <a href="/gtp/base/region" class="btn-shadow float-right btn-wide btn-pill btn btn-outline-secondary">
               <xsl:text>Retourner </xsl:text>
               <i class="fa fa-arrow-left"/>
             </a>
-            <xsl:if test="sec:hasAccess(.,'CONFIGURER_PAIERIES')">
-              <a href="/gtp/base/treasury/edit" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-success">
+            <xsl:if test="sec:hasAccess(.,'CONFIGURER_REGIONS')">
+              <a href="/gtp/base/region/edit" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-success">
                 <xsl:text>Nouveau </xsl:text>
                 <i class="fa fa-file"/>
               </a>
-              <a href="/gtp/base/treasury/delete?id={item/id}" class="btn-shadow btn-wide float-right mr-1 btn-pill btn-hover-shine btn btn-danger" onclick="return confirm('Voulez-vous supprimer ce poste comptable ?');">
+              <a href="/gtp/base/region/delete?code={item/code}" class="btn-shadow btn-wide float-right mr-1 btn-pill btn-hover-shine btn btn-danger" onclick="return confirm('Voulez-vous supprimer cette région ?');">
                 <xsl:text>Supprimer </xsl:text>
                 <i class="fa fa-trash"/>
               </a>
-              <a href="/gtp/base/treasury/edit?id={item/id}" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-primary">
+              <a href="/gtp/base/region/edit?code={item/code}" class="btn-shadow btn-wide float-right btn-pill mr-1 btn-hover-shine btn btn-primary">
                 <xsl:text>Modifier </xsl:text>
                 <i class="fa fa-edit"/>
               </a>

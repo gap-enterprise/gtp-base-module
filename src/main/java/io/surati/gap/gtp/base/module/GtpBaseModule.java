@@ -126,6 +126,14 @@ public enum GtpBaseModule implements Module {
 						),
 						false
 					),
+          new SimpleSubmenu(
+						8, "region", "lnr-book", "Régions", "/gtp/base/region",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_REGIONS,
+							GtpBaseAccess.VISUALISER_REGIONS
+						),
+						false
+					),
 					new SimpleSubmenu(
 						9, "line", "lnr-book", "Lignes", "/gtp/base/line",
 						new IterableOf<>(

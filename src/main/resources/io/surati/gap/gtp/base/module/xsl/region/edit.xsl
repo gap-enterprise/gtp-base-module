@@ -20,11 +20,11 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Postes comptables</xsl:text>
+      <xsl:text>GAP - Régions</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
-    <xsl:variable name="is_new" select="not(item/id)"/>
+    <xsl:variable name="is_new" select="not(item/code)"/>
     <div class="app-page-title app-page-title-simple">
       <div class="page-title-wrapper">
         <div class="page-title-heading">
@@ -32,7 +32,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Postes comptables</xsl:text>
+            <xsl:text>Régions</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -42,16 +42,16 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="breadcrumb-item">
-                    <a href="/gtp/base/treasury">Postes comptables</a>
+                    <a href="/gtp/base/region">Régions</a>
                   </li>
                   <li class="active breadcrumb-item" aria-current="page">
                     <xsl:choose>
                       <xsl:when test="$is_new">
-                        <xsl:text>Créer un poste comptable</xsl:text>
+                        <xsl:text>Créer une région</xsl:text>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:text>Modifier Poste comptable </xsl:text>
-                        <xsl:value-of select="item/abbreviated"/>
+                        <xsl:text>Modifier Région </xsl:text>
+                        <xsl:value-of select="item/code"/>
                       </xsl:otherwise>
                     </xsl:choose>
                   </li>
@@ -64,29 +64,32 @@ SOFTWARE.
     </div>
   </xsl:template>
   <xsl:template match="page" mode="body">
-    <xsl:variable name="is_new" select="not(item/id)"/>
+    <xsl:variable name="is_new" select="not(item/code)"/>
     <div class="main-card mb-3 card">
       <div class="card">
         <div class="card-body">
-          <form action="/gtp/base/treasury/save?id={item/id}" method="post">
-            <input name="id" value="{item/id}" type="hidden" class="form-control"/>
+          <form action="/gtp/base/region/save?code={item/code}" method="post">
             <div class="form-row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="position-relative form-group">
-                  <label for="code" class="">
-                    <xsl:text>Code</xsl:text>
-                    <span style="color: red"> *</span>
-                  </label>
-                  <input name="code" value="{item/code}" id="code" placeholder="Entrez un code ..." type="text" class="form-control" required=""/>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="position-relative form-group">
-                  <label for="abbreviated" class="">
-                    <xsl:text>Abrégé</xsl:text>
-                    <span style="color: red"> *</span>
-                  </label>
-                  <input name="abbreviated" value="{item/abbreviated}" id="abbreviated" placeholder="Entrez l'abrégé ..." type="text" class="form-control" required=""/>
+                  <xsl:choose>
+                    <xsl:when test="$is_new">
+                      <label for="code" class="">
+                        <xsl:text>Code</xsl:text>
+                        <span style="color: red"> *</span>
+                      </label>
+                      <input name="code" id="code" placeholder="Entrez un code ..." type="text" class="form-control" required=""/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <label for="code" class="">
+                        <xsl:text>Code</xsl:text>
+                      </label>
+                      <p>
+                        <xsl:value-of select="item/code"/>
+                      </p>
+                      <input name="code" type="hidden" value="{item/code}"/>
+                    </xsl:otherwise>
+                  </xsl:choose>
                 </div>
               </div>
               <div class="col-md-12">
@@ -100,18 +103,12 @@ SOFTWARE.
               </div>
               <div class="col-md-12">
                 <div class="position-relative form-group">
-                  <label for="representative" class="">
-                    <xsl:text>Représentant</xsl:text>
+                  <label for="notes" class="">
+                    <xsl:text>Notes</xsl:text>
                   </label>
-                  <input name="representative" id="representative" value="{item/representative}" placeholder="Entrez le représentant ..." type="text" class="form-control"/>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="position-relative form-group">
-                  <label for="representative_position" class="">
-                    <xsl:text>Titre</xsl:text>
-                  </label>
-                  <input name="representative_position" id="representative_position" value="{item/representative_position}" placeholder="Entrez le titre du représentant ..." type="text" class="form-control"/>
+                  <textarea name="notes" id="notes" placeholder="Saisir des notes ..." class="form-control" rows="4">
+                    <xsl:value-of select="item/notes"/>
+                  </textarea>
                 </div>
               </div>
             </div>
@@ -128,11 +125,11 @@ SOFTWARE.
                 </xsl:choose>
                 <i class="fa fa-check"/>
               </button>
-              <button type="button" onclick="location.href='/gtp/base/treasury'" class="btn-shadow float-right btn-wide btn-pill mr-1 btn btn-outline-secondary">
+              <button type="button" onclick="location.href='/gtp/base/region'" class="btn-shadow float-right btn-wide btn-pill mr-1 btn btn-outline-secondary">
                 <xsl:if test="not($is_new)">
                   <xsl:attribute name="onclick">
-                    <xsl:text>location.href='/gtp/base/treasury/view?id=</xsl:text>
-                    <xsl:value-of select="item/id"/>
+                    <xsl:text>location.href='/gtp/base/region/view?code=</xsl:text>
+                    <xsl:value-of select="item/code"/>
                     <xsl:text>'</xsl:text>
                   </xsl:attribute>
                 </xsl:if>
