@@ -24,7 +24,7 @@ public final class SecTitles implements Titles {
 
     @Override
     public Iterable<Title> iterate() {
-        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_CHAPITRES)) {
+        if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_TITRES)) {
             throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les titres.");
         }
         return this.origin.iterate();
