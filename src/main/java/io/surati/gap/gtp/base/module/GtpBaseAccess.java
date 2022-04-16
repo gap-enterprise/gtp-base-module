@@ -37,7 +37,7 @@ public enum GtpBaseAccess implements Access {
 	VISUALISER_PAIERIES("Visualiser les paieries", ""),
 	VISUALISER_LIGNES("Visualiser les lignes", ""),
 	VISUALISER_REGIONS("Visualiser les régions", ""),
-	VISUALISER_COMPTE_PECS("Visualiser les comptes PECS", ""),
+	VISUALISER_COMPTE_PECS("Visualiser les comptes PEC", ""),
 	CONFIGURER_TIERS("Configurer les tiers", ""),
 	CONFIGURER_LIASSES("Configurer les liasses", ""),
 	CONFIGURER_TITRES("Configurer les titres", ""),
@@ -47,7 +47,7 @@ public enum GtpBaseAccess implements Access {
 	CONFIGURER_PAIERIES("Configurer les paieries", ""),
 	CONFIGURER_LIGNES("Configurer les lignes", ""),
 	CONFIGURER_REGIONS("Configurer les régions", ""),
-	CONFIGURER_COMPTE_PECS("Configurer les comptes PECS", "");
+	CONFIGURER_COMPTE_PECS("Configurer les comptes PEC", "");
 
 	static {
 		for (Access acs : GtpBaseAccess.values()) {

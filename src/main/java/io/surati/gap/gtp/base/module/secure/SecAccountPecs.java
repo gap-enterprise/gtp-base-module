@@ -41,7 +41,7 @@ public final class SecAccountPecs implements AccountPecs {
     @Override
     public Iterable<AccountPec> iterate() {
         if(!user.profile().accesses().has(GtpBaseAccess.VISUALISER_COMPTE_PECS)) {
-            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les compte PECS.");
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour lister les comptes PEC.");
         }
         return this.origin.iterate();
     }

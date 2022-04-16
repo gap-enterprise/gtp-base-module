@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Compte PECS</xsl:text>
+      <xsl:text>GAP - Comptes PEC</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -31,7 +31,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Compte PECS</xsl:text>
+            <xsl:text>Comptes PEC</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -41,7 +41,7 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="active breadcrumb-item">
-                    Compte PECS
+                    Comptes PEC
                   </li>
                 </ol>
               </nav>
@@ -55,7 +55,7 @@ SOFTWARE.
     <div class="main-card mb-3 card card-body">
       <div class="card-header">
         <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-          <xsl:text>Liste des Compte PECS</xsl:text>
+          <xsl:text>Liste des Comptes PEC</xsl:text>
         </div>
         <xsl:if test="sec:hasAccess(.,'CONFIGURER_COMPTE_PECS')">
           <div class="btn-actions-pane-right">
