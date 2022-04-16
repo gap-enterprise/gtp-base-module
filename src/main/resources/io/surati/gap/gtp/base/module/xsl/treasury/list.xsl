@@ -80,7 +80,7 @@ SOFTWARE.
               <tr>
                 <th>N°</th>
                 <th>Code</th>
-				<th>Abrégé</th>
+                <th>Abrégé</th>
                 <th>Intitulé</th>
                 <th>Actions</th>
               </tr>
@@ -91,7 +91,7 @@ SOFTWARE.
                   <td>
                     <xsl:value-of select="position()"/>
                   </td>
-				  <td>
+                  <td>
                     <xsl:value-of select="code"/>
                   </td>
                   <td>

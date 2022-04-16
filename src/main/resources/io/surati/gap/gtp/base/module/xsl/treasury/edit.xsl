@@ -69,7 +69,7 @@ SOFTWARE.
       <div class="card">
         <div class="card-body">
           <form action="/gtp/base/treasury/save?id={item/id}" method="post">
-			<input name="id" value="{item/id}" type="hidden" class="form-control"/>
+            <input name="id" value="{item/id}" type="hidden" class="form-control"/>
             <div class="form-row">
               <div class="col-md-6">
                 <div class="position-relative form-group">
@@ -80,7 +80,7 @@ SOFTWARE.
                   <input name="code" value="{item/code}" id="code" placeholder="Entrez un code ..." type="text" class="form-control" required=""/>
                 </div>
               </div>
-			  <div class="col-md-6">
+              <div class="col-md-6">
                 <div class="position-relative form-group">
                   <label for="abbreviated" class="">
                     <xsl:text>Abrégé</xsl:text>
@@ -106,12 +106,12 @@ SOFTWARE.
                   <input name="representative" id="representative" value="{item/representative}" placeholder="Entrez le représentant ..." type="text" class="form-control"/>
                 </div>
               </div>
-			  <div class="col-md-12">
+              <div class="col-md-12">
                 <div class="position-relative form-group">
                   <label for="representative_position" class="">
                     <xsl:text>Titre</xsl:text>
                   </label>
-                  <input name="representative_position" id="representative_position" value="{item/representative_position}" placeholder="Entrez le titre du représentant ..." type="text" class="form-control" />
+                  <input name="representative_position" id="representative_position" value="{item/representative_position}" placeholder="Entrez le titre du représentant ..." type="text" class="form-control"/>
                 </div>
               </div>
             </div>

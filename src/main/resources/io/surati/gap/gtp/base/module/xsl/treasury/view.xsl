@@ -68,7 +68,7 @@ SOFTWARE.
                 <xsl:value-of select="item/code"/>
               </p>
             </div>
-			<div class="col-md-6">
+            <div class="col-md-6">
               <h5>
                 <xsl:text>Abrégé</xsl:text>
               </h5>

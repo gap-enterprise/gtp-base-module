@@ -44,7 +44,7 @@ public enum GtpBaseAccess implements Access {
 	CONFIGURER_CHAPITRES("Configurer les chapitres", ""),
 	CONFIGURER_SOUS_CHAPITRES("Configurer les sous-chapitres", ""),
 	CONFIGURER_PAIERIES("Configurer les paieries", ""),
-	CONFIGURER_LIGNES("Configurer les lignes", "");
+	CONFIGURER_LIGNES("Configurer les lignes", ""),
 	CONFIGURER_REGIONS("Configurer les régions", "");
 
 	static {
