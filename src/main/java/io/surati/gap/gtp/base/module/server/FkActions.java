@@ -4,6 +4,8 @@ import io.surati.gap.gtp.base.module.actions.TkBundleDelete;
 import io.surati.gap.gtp.base.module.actions.TkBundleSave;
 import io.surati.gap.gtp.base.module.actions.TkChapterDelete;
 import io.surati.gap.gtp.base.module.actions.TkChapterSave;
+import io.surati.gap.gtp.base.module.actions.TkLineDelete;
+import io.surati.gap.gtp.base.module.actions.TkLineSave;
 import io.surati.gap.gtp.base.module.actions.TkRegionDelete;
 import io.surati.gap.gtp.base.module.actions.TkRegionSave;
 import io.surati.gap.gtp.base.module.actions.TkSectionDelete;
@@ -151,6 +153,20 @@ public final class FkActions extends FkWrap {
 						new TkRegionDelete(source),
 						source
 					)
+				),
+				new FkRegex(
+					"/gtp/base/line/save",
+					new TkSecure(
+						new TkLineSave(source),
+            source
+          )
+				),
+				new FkRegex(
+					"/gtp/base/line/delete",
+					new TkSecure(
+						new TkLineDelete(source),
+					  source
+          )
 				)
 			)
 		);

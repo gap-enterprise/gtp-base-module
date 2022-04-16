@@ -20,7 +20,7 @@ SOFTWARE.
   <xsl:include href="/io/surati/gap/web/base/xsl/layout.xsl"/>
   <xsl:template match="page" mode="head">
     <title>
-      <xsl:text>GAP - Postes comptables</xsl:text>
+      <xsl:text>GAP - Lignes</xsl:text>
     </title>
   </xsl:template>
   <xsl:template match="page" mode="header">
@@ -31,7 +31,7 @@ SOFTWARE.
             <i class="lnr-database icon-gradient bg-night-fade"/>
           </div>
           <div>
-            <xsl:text>Postes comptables</xsl:text>
+            <xsl:text>Lignes</xsl:text>
             <div class="page-title-subheading opacity-10">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -41,7 +41,7 @@ SOFTWARE.
                     </a>
                   </li>
                   <li class="active breadcrumb-item">
-                    Postes comptables
+                    Lignes
                   </li>
                 </ol>
               </nav>
@@ -55,11 +55,11 @@ SOFTWARE.
     <div class="main-card mb-3 card card-body">
       <div class="card-header">
         <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-          <xsl:text>Liste des postes comptables</xsl:text>
+          <xsl:text>Liste des lignes</xsl:text>
         </div>
-        <xsl:if test="sec:hasAccess(.,'CONFIGURER_PAIERIES')">
+        <xsl:if test="sec:hasAccess(.,'CONFIGURER_LIGNES')">
           <div class="btn-actions-pane-right">
-            <a href="/gtp/base/treasury/edit" type="button" class="btn-icon btn-wide btn-outline-2x btn btn-outline-focus btn-sm d-flex">
+            <a href="/gtp/base/line/edit" type="button" class="btn-icon btn-wide btn-outline-2x btn btn-outline-focus btn-sm d-flex">
               <xsl:text>Nouveau</xsl:text>
               <span class="pl-2 align-middle opacity-7">
                 <i class="fa fa-plus"/>
@@ -68,25 +68,24 @@ SOFTWARE.
           </div>
         </xsl:if>
       </div>
-      <xsl:if test="treasuries[not(treasury)]">
+      <xsl:if test="lines[not(line)]">
         <h6 class="text-center pb-1 pt-1">
-          <xsl:text>Il n'y a aucun poste comptable.</xsl:text>
+          <xsl:text>Il n'y a aucune ligne.</xsl:text>
         </h6>
       </xsl:if>
-      <xsl:if test="treasuries[treasury]">
+      <xsl:if test="lines[line]">
         <div class="table-responsive">
           <table class=" mb-0 table table-hover table-sm">
             <thead>
               <tr>
                 <th>N°</th>
                 <th>Code</th>
-                <th>Abrégé</th>
                 <th>Intitulé</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <xsl:for-each select="treasuries/treasury">
+              <xsl:for-each select="lines/line">
                 <tr>
                   <td>
                     <xsl:value-of select="position()"/>
@@ -95,21 +94,18 @@ SOFTWARE.
                     <xsl:value-of select="code"/>
                   </td>
                   <td>
-                    <xsl:value-of select="abbreviated"/>
-                  </td>
-                  <td>
                     <xsl:value-of select="name"/>
                   </td>
                   <td>
                     <div role="group">
-                      <a href="/gtp/base/treasury/view?id={id}" class="mb-2 mr-2 btn btn-sm btn-outline-primary">
+                      <a href="/gtp/base/line/view?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-primary">
                         <i class="fa fa-eye"/>
                       </a>
-                      <xsl:if test="../../sec:hasAccess(.,'CONFIGURER_PAIERIES')">
-                        <a href="/gtp/base/treasury/edit?id={id}" class="mb-2 mr-2 btn btn-sm btn-outline-success">
+                      <xsl:if test="../../sec:hasAccess(.,'CONFIGURER_LIGNES')">
+                        <a href="/gtp/base/line/edit?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-success">
                           <i class="fa fa-edit"/>
                         </a>
-                        <a href="/gtp/base/treasury/delete?id={id}" class="mb-2 mr-2 btn btn-sm btn-outline-danger" onclick="return confirm('Voulez-vous supprimer ce poste comptable ?');">
+                        <a href="/gtp/base/line/delete?code={code}" class="mb-2 mr-2 btn btn-sm btn-outline-danger" onclick="return confirm('Voulez-vous supprimer cette ligne ?');">
                           <i class="fa fa-trash"/>
                         </a>
                       </xsl:if>
