@@ -126,7 +126,7 @@ public enum GtpBaseModule implements Module {
 						),
 						false
 					),
-          new SimpleSubmenu(
+					new SimpleSubmenu(
 						8, "region", "lnr-book", "Régions", "/gtp/base/region",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_REGIONS,
@@ -139,6 +139,14 @@ public enum GtpBaseModule implements Module {
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_LIGNES,
 							GtpBaseAccess.VISUALISER_LIGNES
+						),
+						false
+					),
+					new SimpleSubmenu(
+						10, "account-pec", "lnr-book", "Comptes PEC", "/gtp/base/account-pec",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_COMPTE_PECS,
+							GtpBaseAccess.VISUALISER_COMPTE_PECS
 						),
 						false
 					),

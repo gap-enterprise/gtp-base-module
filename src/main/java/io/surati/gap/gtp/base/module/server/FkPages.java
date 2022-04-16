@@ -1,5 +1,8 @@
 package io.surati.gap.gtp.base.module.server;
 
+import io.surati.gap.gtp.base.module.pages.TkAccountPecEdit;
+import io.surati.gap.gtp.base.module.pages.TkAccountPecList;
+import io.surati.gap.gtp.base.module.pages.TkAccountPecView;
 import io.surati.gap.gtp.base.module.pages.TkBundleEdit;
 import io.surati.gap.gtp.base.module.pages.TkBundleList;
 import io.surati.gap.gtp.base.module.pages.TkBundleView;
@@ -261,6 +264,27 @@ public final class FkPages extends FkWrap {
 					"/gtp/base/region/view",
 					new TkSecure(
 						new TkRegionView(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/account-pec/edit",
+					new TkSecure(
+						new TkAccountPecEdit(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/account-pec",
+					new TkSecure(
+						new TkAccountPecList(src),
+						src
+					)
+				),
+				new FkRegex(
+					"/gtp/base/account-pec/view",
+					new TkSecure(
+						new TkAccountPecView(src),
 						src
 					)
 				)

@@ -1,5 +1,7 @@
 package io.surati.gap.gtp.base.module.server;
 
+import io.surati.gap.gtp.base.module.actions.TkAccountPecDelete;
+import io.surati.gap.gtp.base.module.actions.TkAccountPecSave;
 import io.surati.gap.gtp.base.module.actions.TkBundleDelete;
 import io.surati.gap.gtp.base.module.actions.TkBundleSave;
 import io.surati.gap.gtp.base.module.actions.TkChapterDelete;
@@ -158,15 +160,29 @@ public final class FkActions extends FkWrap {
 					"/gtp/base/line/save",
 					new TkSecure(
 						new TkLineSave(source),
-            source
-          )
+						source
+					)
 				),
 				new FkRegex(
 					"/gtp/base/line/delete",
 					new TkSecure(
 						new TkLineDelete(source),
 					  source
-          )
+					)
+				),
+				new FkRegex(
+					"/gtp/base/account-pec/save",
+					new TkSecure(
+						new TkAccountPecSave(source),
+						source
+					)
+				),
+				new FkRegex(
+					"/gtp/base/account-pec/delete",
+					new TkSecure(
+						new TkAccountPecDelete(source),
+					    source
+					)
 				)
 			)
 		);
