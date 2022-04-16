@@ -87,20 +87,12 @@ public enum GtpBaseModule implements Module {
 						false
 					),
 					new SimpleSubmenu(
-						3, "bundle", "lnr-book", "Liasses", "/gtp/base/bundle",
-						new IterableOf<>(
-							GtpBaseAccess.CONFIGURER_LIASSES,
-							GtpBaseAccess.VISUALISER_LIASSES
-						),
-						true
-					),
-					new SimpleSubmenu(
 						4, "title", "lnr-book", "Titres", "/gtp/base/title",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_TITRES,
 							GtpBaseAccess.VISUALISER_TITRES
 						),
-						false
+						true
 					),
 					new SimpleSubmenu(
 						5, "section", "lnr-book", "Sections", "/gtp/base/section",
@@ -143,7 +135,15 @@ public enum GtpBaseModule implements Module {
 						false
 					),
 					new SimpleSubmenu(
-						10, "account-pec", "lnr-book", "Comptes PEC", "/gtp/base/account-pec",
+						10, "bundle", "lnr-book", "Liasses", "/gtp/base/bundle",
+						new IterableOf<>(
+							GtpBaseAccess.CONFIGURER_LIASSES,
+							GtpBaseAccess.VISUALISER_LIASSES
+						),
+						false
+					),
+					new SimpleSubmenu(
+						11, "account-pec", "lnr-book", "Comptes PEC", "/gtp/base/account-pec",
 						new IterableOf<>(
 							GtpBaseAccess.CONFIGURER_COMPTE_PECS,
 							GtpBaseAccess.VISUALISER_COMPTE_PECS
