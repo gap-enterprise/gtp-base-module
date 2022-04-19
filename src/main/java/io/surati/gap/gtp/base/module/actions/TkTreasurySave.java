@@ -92,7 +92,7 @@ public final class TkTreasurySave implements Take {
 			final String oldcode = item.code();
 			item.update(code, name, abbreviated);;
 			msg = String.format("Le poste comptable %s a été modifié avec succès !", abbreviated);
-			log.info(
+			log.info( 
 				"Modification du poste comptable %s: (Abrégé=%s,Libellé=%s) en %s (Abrégé=%s,Libellé=%s)",
 				oldcode, oldabbreviated, oldname, code, abbreviated, name
 			);
