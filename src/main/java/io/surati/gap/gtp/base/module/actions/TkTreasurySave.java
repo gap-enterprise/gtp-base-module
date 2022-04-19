@@ -81,7 +81,8 @@ public final class TkTreasurySave implements Take {
 		);
 		final String msg;
 		if(tocreate) {
-			//items.add(code, name);
+			final Treasury treasury = items.add(code, name, abbreviated);
+			treasury.representative(representative, representativeposition);
 			msg = String.format("Le poste comptable %s a été créé avec succès !", abbreviated);
 			log.info("Ajout du poste comptable %s - %s", code, abbreviated);
 		} else {
