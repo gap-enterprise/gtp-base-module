@@ -58,4 +58,12 @@ public final class SecTreasuries implements Treasuries {
         }
         return this.origin.iterate();
 	}
+
+	@Override
+	public Treasury add(String code, String name, String abbreviated) {
+		if(!user.profile().accesses().has(GtpBaseAccess.CONFIGURER_PAIERIES)) {
+            throw new NotAuthorizedException("Vos droits d’accès sont insuffisants pour ajouter un poste comptable.");
+        }
+        return this.origin.add(code, name, abbreviated);
+	}
 }
