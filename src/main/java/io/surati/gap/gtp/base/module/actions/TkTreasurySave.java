@@ -79,24 +79,25 @@ public final class TkTreasurySave implements Take {
 			new DbTreasuries(this.source),
 			new RqUser(this.source, req)
 		);
+		final Treasury item;
 		final String msg;
 		if(tocreate) {
-			final Treasury treasury = items.add(code, name, abbreviated);
-			treasury.representative(representative, representativeposition);
+			item = items.add(code, name, abbreviated);
 			msg = String.format("Le poste comptable %s a été créé avec succès !", abbreviated);
 			log.info("Ajout du poste comptable %s - %s", code, abbreviated);
 		} else {
-			final Treasury item = items.get(id);
+			item = items.get(id);
 			final String oldname = item.name();
 			final String oldabbreviated = item.abbreviated();
 			final String oldcode = item.code();
-			item.update(code, name, abbreviated);;
+			item.update(code, name, abbreviated);
 			msg = String.format("Le poste comptable %s a été modifié avec succès !", abbreviated);
 			log.info( 
 				"Modification du poste comptable %s: (Abrégé=%s,Libellé=%s) en %s (Abrégé=%s,Libellé=%s)",
 				oldcode, oldabbreviated, oldname, code, abbreviated, name
 			);
 		}
+		item.representative(representative, representativeposition);
 		return new RsForward(
 			new RsFlash(
 				msg,
